@@ -12,24 +12,24 @@ async function getDB() {
 
 export async function GET() {
     const db = await getDB();
-    await db.run('CREATE TABLE IF NOT EXISTS products (id INTEGER PRIMARY KEY, name TEXT, category TEXT, image TEXT)');
-    const products = await db.all('SELECT * FROM products');
+    await db.run('CREATE TABLE IF NOT EXISTS categories (id INTEGER PRIMARY KEY, name TEXT)');
+    const categories = await db.all('SELECT * FROM categories');
     await db.close();
-    return NextResponse.json(products);
+    return NextResponse.json(categories);
 }
 
 export async function POST(req: Request) {
     const db = await getDB();
-    const { id, name, category, image } = await req.json();
-    await db.run('INSERT INTO products (id, name, category, image) VALUES (?, ?, ?, ?)', [id, name, category, image || null]);
+    const { id, name } = await req.json();
+    await db.run('INSERT INTO categories (id, name) VALUES (?, ?)', [id, name]);
     await db.close();
     return NextResponse.json({ success: true });
 }
 
 export async function PUT(req: Request) {
     const db = await getDB();
-    const { id, name, category, image } = await req.json();
-    await db.run('UPDATE products SET name = ?, category = ?, image = ? WHERE id = ?', [name, category, image || null, id]);
+    const { id, name } = await req.json();
+    await db.run('UPDATE categories SET name = ? WHERE id = ?', [name, id]);
     await db.close();
     return NextResponse.json({ success: true });
 }
@@ -37,7 +37,7 @@ export async function PUT(req: Request) {
 export async function DELETE(req: Request) {
     const db = await getDB();
     const { id } = await req.json();
-    await db.run('DELETE FROM products WHERE id = ?', [id]);
+    await db.run('DELETE FROM categories WHERE id = ?', [id]);
     await db.close();
     return NextResponse.json({ success: true });
 }
