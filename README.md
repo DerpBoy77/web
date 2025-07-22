@@ -117,34 +117,11 @@ The system comes pre-loaded with 17 garment hanger categories:
 - Children's Hangers, Heavy Coat Hangers
 - Standard Hook, Non-Slip Hook, Swivel Hook, Heavy Duty Hook, Cascade Hook
 
-## 🚀 Deployment
-
-### Vercel (Recommended)
-```bash
-npm run build
-# Deploy to Vercel platform
-```
-
-### Other Platforms
-1. Build the application: `npm run build`
-2. Start production server: `npm start`
-3. Ensure SQLite database permissions are set correctly
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit changes: `git commit -m 'Add feature'`
-4. Push to branch: `git push origin feature-name`
-5. Submit a pull request
-
 ## 📄 License
 
 This project is licensed under the MIT License.
 
-## 📞 Support
 
-For support or questions, please contact through the contact page or open an issue in the repository.
 
 ---
 
