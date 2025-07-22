@@ -9,7 +9,7 @@ export default function Contact() {
 
             <div className="container mx-auto px-4 py-16 text-black">
                 <h1 className="text-4xl font-bold text-center mb-4">Contact Us</h1>
-                <p className="text-lg text-center text-gray-600 mb-12">We'd love to hear from you. Please fill out the form below.</p>
+                <p className="text-lg text-center text-gray-600 mb-12">We&apos;d love to hear from you. Please fill out the form below.</p>
 
                 <div className="max-w-2xl mx-auto">
                     <form className="bg-gray-50 p-8 rounded-lg shadow-md">

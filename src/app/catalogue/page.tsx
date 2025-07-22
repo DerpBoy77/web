@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Image from "next/image";
 
 type Product = { id: number; name: string; category: string; image?: string };
 

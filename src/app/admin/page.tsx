@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -38,14 +38,8 @@ export default function Admin() {
     const [activeTab, setActiveTab] = useState<"products" | "categories">("products");
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
-    // Fetch data on component mount
-    useEffect(() => {
-        fetchProducts();
-        fetchCategories();
-    }, []);
-
     // API functions
-    const fetchProducts = async () => {
+    const fetchProducts = useCallback(async () => {
         try {
             const response = await fetch("/api/products");
             const data = await response.json();
@@ -53,9 +47,9 @@ export default function Admin() {
         } catch (error) {
             console.error("Error fetching products:", error);
         }
-    };
+    }, []);
 
-    const fetchCategories = async () => {
+    const fetchCategories = useCallback(async () => {
         try {
             const response = await fetch("/api/categories");
             const data = await response.json();
@@ -74,9 +68,9 @@ export default function Admin() {
             console.error("Error fetching categories:", error);
             setCategories([]);
         }
-    };
+    }, []);
 
-    const seedDefaultCategories = async () => {
+    const seedDefaultCategories = useCallback(async () => {
         const defaultCategories = [
             // Hanger Types
             { id: 1, name: "Plastic" },
@@ -129,7 +123,13 @@ export default function Admin() {
             console.error("Error seeding default categories:", error);
             alert("Error adding default categories. Please try again.");
         }
-    };
+    }, []);
+
+    // Fetch data on component mount
+    useEffect(() => {
+        fetchProducts();
+        fetchCategories();
+    }, [fetchProducts, fetchCategories]);
 
     // Product handlers
     const handleProductChange = (e: React.ChangeEvent<HTMLInputElement>) => {

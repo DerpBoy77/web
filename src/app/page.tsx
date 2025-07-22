@@ -1,5 +1,4 @@
 
-import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -35,7 +34,7 @@ export default function Home() {
       {/* Quote Section */}
       <section className="w-full py-16 px-4 text-center bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <p className="text-2xl italic text-gray-600">"Fashion is not something that exists in dresses only. Fashion is in the sky, in the street, fashion has to do with ideas, the way we live, what is happening."</p>
+          <p className="text-2xl italic text-gray-600">&quot;Fashion is not something that exists in dresses only. Fashion is in the sky, in the street, fashion has to do with ideas, the way we live, what is happening.&quot;</p>
           <p className="mt-4 font-semibold">- Coco Chanel</p>
         </div>
         <div className="mt-12">

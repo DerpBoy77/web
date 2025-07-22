@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 interface HeaderProps {
     currentPage?: string;
 }
@@ -8,12 +10,12 @@ export default function Header({ currentPage = "" }: HeaderProps) {
             {/* <Image src="/logo.png" alt="Kavi Hangbro Logo" width={150} height={50} /> */}
             <div className="text-2xl font-bold tracking-wide text-gray-900">Kavi Hangbro</div>
             <nav className="hidden md:flex items-center space-x-4 text-base font-medium">
-                <a
+                <Link
                     href="/"
                     className={currentPage === "home" ? "text-pink-500 font-semibold" : "text-gray-700 hover:text-pink-500"}
                 >
                     Home
-                </a>
+                </Link>
                 <a
                     href="/about"
                     className={currentPage === "about" ? "text-pink-500 font-semibold" : "text-gray-700 hover:text-pink-500"}
