@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Garment Hanger E-Commerce Platform
 
-## Getting Started
+A comprehensive e-commerce platform for garment hangers, built as a clone of the original kavihangbro.com website. Features a modern Next.js frontend with a complete admin dashboard for product and category management.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Frontend
+- **Homepage**: Exact clone of kavihangbro.com with hero section, features showcase, and testimonials
+- **Product Catalogue**: Dynamic product display with real-time filtering and sorting
+- **Contact Page**: Professional contact form and business information
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+
+### Admin Dashboard
+- **Product Management**: Create, read, update, and delete products
+- **Category Management**: Full CRUD operations for product categories
+- **Image Upload**: Support for both file upload and URL-based images
+- **Default Categories**: Auto-seeding with 17 predefined garment hanger categories
+- **Multi-Category Selection**: Products can belong to multiple categories
+- **Tabbed Interface**: Organized admin panel with separate product and category tabs
+
+### Advanced Filtering
+- **Hanger Type**: Plastic, Wood, Metal, Wire, Specialty
+- **Garment Type**: Suits, Dresses, Shirts, Pants, Lingerie, Children's, Heavy Coats
+- **Hook Type**: Standard, Non-Slip, Swivel, Heavy Duty, Cascade
+- **Sorting Options**: Name (A-Z, Z-A), Price (Low-High, High-Low)
+- **Real-time Updates**: Instant filtering without page reloads
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15.4.2 with App Router
+- **Frontend**: React 19.1.0 with TypeScript
+- **Styling**: Tailwind CSS 4 with responsive design
+- **Database**: SQLite with sqlite3 package
+- **API**: RESTful endpoints for products and categories
+- **Image Handling**: File upload with preview functionality
+
+## 📦 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd web
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Access the application**
+   - Homepage: [http://localhost:3000](http://localhost:3000)
+   - Catalogue: [http://localhost:3000/catalogue](http://localhost:3000/catalogue)
+   - Admin Panel: [http://localhost:3000/admin](http://localhost:3000/admin)
+   - Contact: [http://localhost:3000/contact](http://localhost:3000/contact)
+
+## 🗂️ Project Structure
+
+```
+src/
+├── app/
+│   ├── admin/              # Admin dashboard
+│   ├── api/
+│   │   ├── products/       # Product API endpoints
+│   │   └── categories/     # Category API endpoints
+│   ├── catalogue/          # Product catalogue page
+│   ├── contact/            # Contact page
+│   ├── globals.css         # Global styles
+│   ├── layout.tsx          # Root layout
+│   └── page.tsx            # Homepage
+└── components/
+    ├── Header.tsx          # Navigation header
+    └── Footer.tsx          # Site footer
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 API Endpoints
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Products
+- `GET /api/products` - Fetch all products
+- `POST /api/products` - Create new product
+- `PUT /api/products` - Update existing product
+- `DELETE /api/products` - Delete product
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Categories
+- `GET /api/categories` - Fetch all categories
+- `POST /api/categories` - Create new category
+- `PUT /api/categories` - Update existing category
+- `DELETE /api/categories` - Delete category
 
-## Learn More
+## 💾 Database Schema
 
-To learn more about Next.js, take a look at the following resources:
+### Products Table
+```sql
+- id (INTEGER PRIMARY KEY)
+- name (TEXT NOT NULL)
+- description (TEXT)
+- price (REAL)
+- image (TEXT)
+- categories (TEXT) -- JSON array of category IDs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Categories Table
+```sql
+- id (INTEGER PRIMARY KEY)
+- name (TEXT NOT NULL UNIQUE)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 Default Categories
 
-## Deploy on Vercel
+The system comes pre-loaded with 17 garment hanger categories:
+- Plastic Hangers, Wood Hangers, Metal Hangers, Wire Hangers, Specialty Hangers
+- Suit Hangers, Dress Hangers, Shirt Hangers, Pants Hangers, Lingerie Hangers
+- Children's Hangers, Heavy Coat Hangers
+- Standard Hook, Non-Slip Hook, Swivel Hook, Heavy Duty Hook, Cascade Hook
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Vercel (Recommended)
+```bash
+npm run build
+# Deploy to Vercel platform
+```
+
+### Other Platforms
+1. Build the application: `npm run build`
+2. Start production server: `npm start`
+3. Ensure SQLite database permissions are set correctly
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -m 'Add feature'`
+4. Push to branch: `git push origin feature-name`
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 📞 Support
+
+For support or questions, please contact through the contact page or open an issue in the repository.
+
+---
+
+Built with ❤️ using Next.js and modern web technologies.
