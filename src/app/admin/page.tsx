@@ -49,27 +49,6 @@ export default function Admin() {
         }
     }, []);
 
-    const fetchCategories = useCallback(async () => {
-        try {
-            const response = await fetch("/api/categories");
-            const data = await response.json();
-
-            // If no categories exist, seed with default categories
-            if (data.length === 0) {
-                await seedDefaultCategories();
-                // Fetch again after seeding
-                const responseAfterSeed = await fetch("/api/categories");
-                const dataAfterSeed = await responseAfterSeed.json();
-                setCategories(dataAfterSeed);
-            } else {
-                setCategories(data);
-            }
-        } catch (error) {
-            console.error("Error fetching categories:", error);
-            setCategories([]);
-        }
-    }, []);
-
     const seedDefaultCategories = useCallback(async () => {
         const defaultCategories = [
             // Hanger Types
@@ -124,6 +103,27 @@ export default function Admin() {
             alert("Error adding default categories. Please try again.");
         }
     }, []);
+
+    const fetchCategories = useCallback(async () => {
+        try {
+            const response = await fetch("/api/categories");
+            const data = await response.json();
+
+            // If no categories exist, seed with default categories
+            if (data.length === 0) {
+                await seedDefaultCategories();
+                // Fetch again after seeding
+                const responseAfterSeed = await fetch("/api/categories");
+                const dataAfterSeed = await responseAfterSeed.json();
+                setCategories(dataAfterSeed);
+            } else {
+                setCategories(data);
+            }
+        } catch (error) {
+            console.error("Error fetching categories:", error);
+            setCategories([]);
+        }
+    }, [seedDefaultCategories]);
 
     // Fetch data on component mount
     useEffect(() => {
@@ -900,7 +900,7 @@ export default function Admin() {
                                 {/* Show message if no categories at all */}
                                 {categories.length === 0 && (
                                     <div className="text-center text-gray-500 py-12">
-                                        No categories found. Add your first category above or use "Add Default Categories".
+                                        No categories found. Add your first category above or use &quot;Add Default Categories&quot;.
                                     </div>
                                 )}
                             </div>

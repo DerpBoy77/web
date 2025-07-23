@@ -12,7 +12,7 @@ export default function Contact() {
                 <p className="text-lg text-center text-gray-600 mb-12">We&apos;d love to hear from you. Please fill out the form below.</p>
 
                 <div className="max-w-2xl mx-auto">
-                    <form className="bg-gray-50 p-8 rounded-lg shadow-md">
+                    <form className="bg-gray-50 p-8 rounded-lg shadow-md" data-netlify="true">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <input type="text" placeholder="Your Name" className="w-full p-3 border rounded-md" />
                             <input type="email" placeholder="Your Email" className="w-full p-3 border rounded-md" />
