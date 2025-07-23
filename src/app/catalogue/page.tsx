@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 type Product = { id: number; name: string; category: string; image?: string };
+type EnquiryItem = Product & { quantity: number };
 
 export default function Catalogue() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -14,6 +15,7 @@ export default function Catalogue() {
         hookType: [] as string[]
     });
     const [sortBy, setSortBy] = useState("default");
+    const [enquiryItems, setEnquiryItems] = useState<EnquiryItem[]>([]);
 
     useEffect(() => {
         fetch("/api/products")
@@ -22,6 +24,13 @@ export default function Catalogue() {
                 setProducts(data);
                 setFilteredProducts(data);
             });
+
+        // Load enquiry items from localStorage
+        const savedEnquiry = localStorage.getItem("enquiryItems");
+        if (savedEnquiry) {
+            const parsedEnquiry: Product[] = JSON.parse(savedEnquiry);
+            setEnquiryItems(parsedEnquiry.map(item => ({ ...item, quantity: 1 })));
+        }
     }, []);
 
     // Filter products whenever filters or products change
@@ -94,12 +103,28 @@ export default function Catalogue() {
         setSortBy(e.target.value);
     };
 
+    const addToEnquiry = (product: Product) => {
+        const existingEnquiry: Product[] = JSON.parse(localStorage.getItem("enquiryItems") || "[]");
+        const existingItem = existingEnquiry.find((item: Product) => item.id === product.id);
+
+        if (!existingItem) {
+            // Only add if item doesn't exist
+            const updatedEnquiry = [...existingEnquiry, product];
+            localStorage.setItem("enquiryItems", JSON.stringify(updatedEnquiry));
+            setEnquiryItems(updatedEnquiry.map(item => ({ ...item, quantity: 1 })));
+        }
+    };
+
+    const isInEnquiry = (productId: number) => {
+        return enquiryItems.some(item => item.id === productId);
+    };
+
     return (
-        <div className="bg-gray-50">
+        <div className="bg-gray-50 min-h-screen flex flex-col">
             {/* Header */}
             <Header currentPage="catalogue" />
 
-            <div className="container mx-auto px-4 py-12 text-black min-h-screen">
+            <div className="container mx-auto px-4 py-12 text-black flex-1">
                 <h1 className="text-4xl font-bold text-center mb-12">Catalogue</h1>
                 <div className="flex">
                     {/* Filters */}
@@ -108,7 +133,7 @@ export default function Catalogue() {
                         <div className="space-y-6">
                             <div>
                                 <h3 className="font-semibold mb-2">Hanger Type</h3>
-                                <div className="space-y-2">
+                                <div className="space-y-2 ml-4">
                                     {["Plastic", "Wooden", "Metal", "Velvet", "Wire"].map((type) => (
                                         <label key={type} className="flex items-center cursor-pointer">
                                             <input
@@ -124,7 +149,7 @@ export default function Catalogue() {
                             </div>
                             <div>
                                 <h3 className="font-semibold mb-2">Garment Type</h3>
-                                <div className="space-y-2">
+                                <div className="space-y-2 ml-4">
                                     {["Shirt", "Dress", "Suit", "Coat", "Trouser", "Skirt", "Kids"].map((type) => (
                                         <label key={type} className="flex items-center cursor-pointer">
                                             <input
@@ -140,7 +165,7 @@ export default function Catalogue() {
                             </div>
                             <div>
                                 <h3 className="font-semibold mb-2">Hook Type</h3>
-                                <div className="space-y-2">
+                                <div className="space-y-2 ml-4">
                                     {["Swivel", "Fixed", "Notched", "Clips", "Non-slip"].map((type) => (
                                         <label key={type} className="flex items-center cursor-pointer">
                                             <input
@@ -200,7 +225,7 @@ export default function Catalogue() {
                                 )}
                             </p>
                             <select
-                                className="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                                className=" focus:ring-2 focus:ring-pink-500 focus:border-transparent"
                                 value={sortBy}
                                 onChange={handleSortChange}
                             >
@@ -248,8 +273,14 @@ export default function Catalogue() {
                                         )}
                                         <p className="font-semibold text-gray-900">{product.name}</p>
                                         <p className="text-sm text-gray-500 mb-4">{product.category}</p>
-                                        <button className="bg-pink-500 text-white w-full py-2 rounded-md hover:bg-pink-600 transition-colors">
-                                            ADD TO ENQUIRY
+                                        <button
+                                            onClick={() => addToEnquiry(product)}
+                                            className={`w-full py-2 rounded-md transition-colors ${isInEnquiry(product.id)
+                                                ? "bg-green-500 text-white hover:bg-green-600"
+                                                : "bg-pink-500 text-white hover:bg-pink-600"
+                                                }`}
+                                        >
+                                            {isInEnquiry(product.id) ? "✓ ADDED TO ENQUIRY" : "ADD TO ENQUIRY"}
                                         </button>
                                     </div>
                                 ))}
@@ -257,6 +288,23 @@ export default function Catalogue() {
                         )}
                     </main>
                 </div>
+
+                {/* Floating Enquiry Counter */}
+                {enquiryItems.length > 0 && (
+                    <div className="fixed bottom-6 right-6 z-50">
+                        <a
+                            href="/enquiry"
+                            className="bg-pink-500 hover:bg-pink-600 text-white rounded-full p-4 shadow-lg transition-colors flex items-center space-x-2"
+                        >
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                            <span className="font-medium">
+                                {enquiryItems.length} items
+                            </span>
+                        </a>
+                    </div>
+                )}
             </div>
             <Footer />
         </div>

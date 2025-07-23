@@ -4,10 +4,10 @@ import Footer from "@/components/Footer";
 
 export default function Contact() {
     return (
-        <div className="bg-white">
+        <div className="bg-white min-h-screen flex flex-col">
             <Header currentPage="contact" />
 
-            <div className="container mx-auto px-4 py-16 text-black">
+            <div className="container mx-auto px-4 py-16 text-black flex-1">
                 <h1 className="text-4xl font-bold text-center mb-4">Contact Us</h1>
                 <p className="text-lg text-center text-gray-600 mb-12">We&apos;d love to hear from you. Please fill out the form below.</p>
 

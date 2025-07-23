@@ -291,7 +291,7 @@ export default function Admin() {
     };
 
     return (
-        <div className="bg-gray-100 min-h-screen">
+        <div className="bg-gray-100 min-h-screen flex flex-col">
             <Header currentPage="admin" />
 
             {/* Quick Actions Bar */}
@@ -309,7 +309,7 @@ export default function Admin() {
                 </div>
             </div>
 
-            <div className="container mx-auto px-4 py-8">
+            <div className="container mx-auto px-4 py-8 flex-1">
                 {/* Tab Navigation */}
                 <div className="bg-white rounded-lg shadow-md mb-8">
                     <div className="flex border-b">
@@ -395,21 +395,109 @@ export default function Admin() {
                                         <label className="block text-sm font-medium text-gray-700 mb-3">
                                             Select Categories
                                         </label>
-                                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 bg-gray-50 rounded-lg">
-                                            {categories.map((category) => (
-                                                <label key={category.id} className="flex items-center space-x-2 cursor-pointer">
-                                                    <input
-                                                        type="checkbox"
-                                                        checked={selectedCategories.includes(category.name)}
-                                                        onChange={() => handleCategorySelection(category.name)}
-                                                        className="rounded border-gray-300 text-pink-500 focus:ring-pink-500"
-                                                    />
-                                                    <span className="text-sm text-gray-700">{category.name}</span>
-                                                </label>
-                                            ))}
+                                        <div className="space-y-6 p-4 bg-gray-50 rounded-lg">
+                                            {/* Hanger Type Categories */}
+                                            <div>
+                                                <h4 className="text-sm font-semibold text-gray-800 mb-3 flex items-center">
+                                                    <span className="w-3 h-3 bg-pink-500 rounded-full mr-2"></span>
+                                                    Hanger Type
+                                                </h4>
+                                                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 ml-5">
+                                                    {categories
+                                                        .filter(cat => ["Plastic", "Wooden", "Metal", "Velvet", "Wire"].includes(cat.name))
+                                                        .map((category) => (
+                                                            <label key={category.id} className="flex items-center space-x-2 cursor-pointer">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    checked={selectedCategories.includes(category.name)}
+                                                                    onChange={() => handleCategorySelection(category.name)}
+                                                                    className="rounded border-gray-300 text-pink-500 focus:ring-pink-500"
+                                                                />
+                                                                <span className="text-sm text-gray-700">{category.name}</span>
+                                                            </label>
+                                                        ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Garment Type Categories */}
+                                            <div>
+                                                <h4 className="text-sm font-semibold text-gray-800 mb-3 flex items-center">
+                                                    <span className="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
+                                                    Garment Type
+                                                </h4>
+                                                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 ml-5">
+                                                    {categories
+                                                        .filter(cat => ["Shirt", "Dress", "Suit", "Coat", "Trouser", "Skirt", "Kids"].includes(cat.name))
+                                                        .map((category) => (
+                                                            <label key={category.id} className="flex items-center space-x-2 cursor-pointer">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    checked={selectedCategories.includes(category.name)}
+                                                                    onChange={() => handleCategorySelection(category.name)}
+                                                                    className="rounded border-gray-300 text-blue-500 focus:ring-blue-500"
+                                                                />
+                                                                <span className="text-sm text-gray-700">{category.name}</span>
+                                                            </label>
+                                                        ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Hook Type Categories */}
+                                            <div>
+                                                <h4 className="text-sm font-semibold text-gray-800 mb-3 flex items-center">
+                                                    <span className="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                                                    Hook Type
+                                                </h4>
+                                                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 ml-5">
+                                                    {categories
+                                                        .filter(cat => ["Swivel", "Fixed", "Notched", "Clips", "Non-slip"].includes(cat.name))
+                                                        .map((category) => (
+                                                            <label key={category.id} className="flex items-center space-x-2 cursor-pointer">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    checked={selectedCategories.includes(category.name)}
+                                                                    onChange={() => handleCategorySelection(category.name)}
+                                                                    className="rounded border-gray-300 text-green-500 focus:ring-green-500"
+                                                                />
+                                                                <span className="text-sm text-gray-700">{category.name}</span>
+                                                            </label>
+                                                        ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Other Categories */}
+                                            {(() => {
+                                                const knownCategories = ["Plastic", "Wooden", "Metal", "Velvet", "Wire", "Shirt", "Dress", "Suit", "Coat", "Trouser", "Skirt", "Kids", "Swivel", "Fixed", "Notched", "Clips", "Non-slip"];
+                                                const otherCategories = categories.filter(cat => !knownCategories.includes(cat.name));
+
+                                                if (otherCategories.length > 0) {
+                                                    return (
+                                                        <div>
+                                                            <h4 className="text-sm font-semibold text-gray-800 mb-3 flex items-center">
+                                                                <span className="w-3 h-3 bg-gray-500 rounded-full mr-2"></span>
+                                                                Other Categories
+                                                            </h4>
+                                                            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 ml-5">
+                                                                {otherCategories.map((category) => (
+                                                                    <label key={category.id} className="flex items-center space-x-2 cursor-pointer">
+                                                                        <input
+                                                                            type="checkbox"
+                                                                            checked={selectedCategories.includes(category.name)}
+                                                                            onChange={() => handleCategorySelection(category.name)}
+                                                                            className="rounded border-gray-300 text-gray-500 focus:ring-gray-500"
+                                                                        />
+                                                                        <span className="text-sm text-gray-700">{category.name}</span>
+                                                                    </label>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                }
+                                                return null;
+                                            })()}
                                         </div>
                                         {selectedCategories.length > 0 && (
-                                            <div className="mt-2 p-3 bg-pink-50 rounded-lg">
+                                            <div className="mt-3 p-3 bg-pink-50 rounded-lg">
                                                 <span className="text-sm font-medium text-pink-700">
                                                     Selected: {selectedCategories.join(", ")}
                                                 </span>
@@ -641,49 +729,180 @@ export default function Admin() {
                                     Categories List ({categories.length} items)
                                 </h3>
                             </div>
-                            <div className="overflow-x-auto">
-                                <table className="w-full">
-                                    <thead className="bg-gray-50">
-                                        <tr>
-                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="bg-white divide-y divide-gray-200">
-                                        {categories.map((category, index) => (
-                                            <tr key={category.id} className="hover:bg-gray-50">
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                    {category.id}
-                                                </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                    {category.name}
-                                                </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <button
-                                                        onClick={() => handleEditCategory(index)}
-                                                        className="text-blue-600 hover:text-blue-900 mr-3"
-                                                    >
-                                                        Edit
-                                                    </button>
-                                                    <button
-                                                        onClick={() => handleDeleteCategory(index)}
-                                                        className="text-red-600 hover:text-red-900"
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                        {categories.length === 0 && (
-                                            <tr>
-                                                <td colSpan={3} className="px-6 py-12 text-center text-gray-500">
-                                                    No categories found. Add your first category above.
-                                                </td>
-                                            </tr>
+                            <div className="p-6 space-y-8">
+                                {/* Hanger Type Categories */}
+                                <div>
+                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                        <span className="w-4 h-4 bg-pink-500 rounded-full mr-3"></span>
+                                        Hanger Type Categories
+                                    </h4>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        {categories
+                                            .filter(cat => ["Plastic", "Wooden", "Metal", "Velvet", "Wire"].includes(cat.name))
+                                            .map((category, index) => (
+                                                <div key={category.id} className="bg-pink-50 border border-pink-200 rounded-lg p-4">
+                                                    <div className="flex justify-between items-center">
+                                                        <div>
+                                                            <span className="text-sm text-gray-600">ID: {category.id}</span>
+                                                            <h5 className="font-medium text-gray-900">{category.name}</h5>
+                                                        </div>
+                                                        <div className="flex space-x-2">
+                                                            <button
+                                                                onClick={() => handleEditCategory(categories.findIndex(c => c.id === category.id))}
+                                                                className="text-blue-600 hover:text-blue-900 text-sm"
+                                                            >
+                                                                Edit
+                                                            </button>
+                                                            <button
+                                                                onClick={() => handleDeleteCategory(categories.findIndex(c => c.id === category.id))}
+                                                                className="text-red-600 hover:text-red-900 text-sm"
+                                                            >
+                                                                Delete
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        {categories.filter(cat => ["Plastic", "Wooden", "Metal", "Velvet", "Wire"].includes(cat.name)).length === 0 && (
+                                            <div className="col-span-full text-center text-gray-500 py-4 bg-gray-50 rounded-lg">
+                                                No hanger type categories found
+                                            </div>
                                         )}
-                                    </tbody>
-                                </table>
+                                    </div>
+                                </div>
+
+                                {/* Garment Type Categories */}
+                                <div>
+                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                        <span className="w-4 h-4 bg-blue-500 rounded-full mr-3"></span>
+                                        Garment Type Categories
+                                    </h4>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        {categories
+                                            .filter(cat => ["Shirt", "Dress", "Suit", "Coat", "Trouser", "Skirt", "Kids"].includes(cat.name))
+                                            .map((category, index) => (
+                                                <div key={category.id} className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                                    <div className="flex justify-between items-center">
+                                                        <div>
+                                                            <span className="text-sm text-gray-600">ID: {category.id}</span>
+                                                            <h5 className="font-medium text-gray-900">{category.name}</h5>
+                                                        </div>
+                                                        <div className="flex space-x-2">
+                                                            <button
+                                                                onClick={() => handleEditCategory(categories.findIndex(c => c.id === category.id))}
+                                                                className="text-blue-600 hover:text-blue-900 text-sm"
+                                                            >
+                                                                Edit
+                                                            </button>
+                                                            <button
+                                                                onClick={() => handleDeleteCategory(categories.findIndex(c => c.id === category.id))}
+                                                                className="text-red-600 hover:text-red-900 text-sm"
+                                                            >
+                                                                Delete
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        {categories.filter(cat => ["Shirt", "Dress", "Suit", "Coat", "Trouser", "Skirt", "Kids"].includes(cat.name)).length === 0 && (
+                                            <div className="col-span-full text-center text-gray-500 py-4 bg-gray-50 rounded-lg">
+                                                No garment type categories found
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Hook Type Categories */}
+                                <div>
+                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                        <span className="w-4 h-4 bg-green-500 rounded-full mr-3"></span>
+                                        Hook Type Categories
+                                    </h4>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        {categories
+                                            .filter(cat => ["Swivel", "Fixed", "Notched", "Clips", "Non-slip"].includes(cat.name))
+                                            .map((category, index) => (
+                                                <div key={category.id} className="bg-green-50 border border-green-200 rounded-lg p-4">
+                                                    <div className="flex justify-between items-center">
+                                                        <div>
+                                                            <span className="text-sm text-gray-600">ID: {category.id}</span>
+                                                            <h5 className="font-medium text-gray-900">{category.name}</h5>
+                                                        </div>
+                                                        <div className="flex space-x-2">
+                                                            <button
+                                                                onClick={() => handleEditCategory(categories.findIndex(c => c.id === category.id))}
+                                                                className="text-blue-600 hover:text-blue-900 text-sm"
+                                                            >
+                                                                Edit
+                                                            </button>
+                                                            <button
+                                                                onClick={() => handleDeleteCategory(categories.findIndex(c => c.id === category.id))}
+                                                                className="text-red-600 hover:text-red-900 text-sm"
+                                                            >
+                                                                Delete
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        {categories.filter(cat => ["Swivel", "Fixed", "Notched", "Clips", "Non-slip"].includes(cat.name)).length === 0 && (
+                                            <div className="col-span-full text-center text-gray-500 py-4 bg-gray-50 rounded-lg">
+                                                No hook type categories found
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Other Categories */}
+                                {(() => {
+                                    const knownCategories = ["Plastic", "Wooden", "Metal", "Velvet", "Wire", "Shirt", "Dress", "Suit", "Coat", "Trouser", "Skirt", "Kids", "Swivel", "Fixed", "Notched", "Clips", "Non-slip"];
+                                    const otherCategories = categories.filter(cat => !knownCategories.includes(cat.name));
+
+                                    if (otherCategories.length > 0) {
+                                        return (
+                                            <div>
+                                                <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                                    <span className="w-4 h-4 bg-gray-500 rounded-full mr-3"></span>
+                                                    Other Categories
+                                                </h4>
+                                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                                    {otherCategories.map((category, index) => (
+                                                        <div key={category.id} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                                            <div className="flex justify-between items-center">
+                                                                <div>
+                                                                    <span className="text-sm text-gray-600">ID: {category.id}</span>
+                                                                    <h5 className="font-medium text-gray-900">{category.name}</h5>
+                                                                </div>
+                                                                <div className="flex space-x-2">
+                                                                    <button
+                                                                        onClick={() => handleEditCategory(categories.findIndex(c => c.id === category.id))}
+                                                                        className="text-blue-600 hover:text-blue-900 text-sm"
+                                                                    >
+                                                                        Edit
+                                                                    </button>
+                                                                    <button
+                                                                        onClick={() => handleDeleteCategory(categories.findIndex(c => c.id === category.id))}
+                                                                        className="text-red-600 hover:text-red-900 text-sm"
+                                                                    >
+                                                                        Delete
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        );
+                                    }
+                                    return null;
+                                })()}
+
+                                {/* Show message if no categories at all */}
+                                {categories.length === 0 && (
+                                    <div className="text-center text-gray-500 py-12">
+                                        No categories found. Add your first category above or use "Add Default Categories".
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

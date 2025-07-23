@@ -6,7 +6,7 @@ interface HeaderProps {
 
 export default function Header({ currentPage = "" }: HeaderProps) {
     return (
-        <header className="w-full py-4 px-8 flex justify-between items-center shadow-md bg-white sticky top-0 z-50">
+        <header className="w-full py-4 px-8 flex justify-between items-center shadow-md bg-white sticky top-0 z-50 font-sans">
             {/* <Image src="/logo.png" alt="Kavi Hangbro Logo" width={150} height={50} /> */}
             <div className="text-2xl font-bold tracking-wide text-gray-900">Kavi Hangbro</div>
             <nav className="hidden md:flex items-center space-x-4 text-base font-medium">
