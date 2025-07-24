@@ -123,10 +123,10 @@ export default function Catalogue() {
 
     // Filter component for reuse
     const FilterContent = () => (
-        <div className="space-y-6" style={{ backgroundColor: 'white' }}>
-            <div style={{ backgroundColor: 'white' }}>
+        <div className="space-y-6" >
+            <div >
                 <h3 className="font-semibold mb-2 text-gray-900">Hanger Type</h3>
-                <div className="space-y-2 ml-4" style={{ backgroundColor: 'white' }}>
+                <div className="space-y-2 ml-4" >
                     {["Plastic", "Wooden", "Metal", "Velvet", "Wire"].map((type) => (
                         <label key={type} className="flex items-center cursor-pointer">
                             <input
@@ -140,9 +140,9 @@ export default function Catalogue() {
                     ))}
                 </div>
             </div>
-            <div style={{ backgroundColor: 'white' }}>
+            <div >
                 <h3 className="font-semibold mb-2 text-gray-900">Garment Type</h3>
-                <div className="space-y-2 ml-4" style={{ backgroundColor: 'white' }}>
+                <div className="space-y-2 ml-4" >
                     {["Shirt", "Dress", "Suit", "Coat", "Trouser", "Skirt", "Kids"].map((type) => (
                         <label key={type} className="flex items-center cursor-pointer">
                             <input
@@ -156,9 +156,9 @@ export default function Catalogue() {
                     ))}
                 </div>
             </div>
-            <div style={{ backgroundColor: 'white' }}>
+            <div >
                 <h3 className="font-semibold mb-2 text-gray-900">Hook Type</h3>
-                <div className="space-y-2 ml-4" style={{ backgroundColor: 'white' }}>
+                <div className="space-y-2 ml-4">
                     {["Swivel", "Fixed", "Notched", "Clips", "Non-slip"].map((type) => (
                         <label key={type} className="flex items-center cursor-pointer">
                             <input
@@ -175,9 +175,9 @@ export default function Catalogue() {
 
             {/* Active Filters Display */}
             {(filters.hangerType.length > 0 || filters.garmentType.length > 0 || filters.hookType.length > 0) && (
-                <div className="border-t pt-4" style={{ backgroundColor: 'white' }}>
+                <div className="border-t pt-4">
                     <h4 className="font-semibold mb-2 text-sm text-gray-900">Active Filters:</h4>
-                    <div className="space-y-1" style={{ backgroundColor: 'white' }}>
+                    <div className="space-y-1" >
                         {filters.hangerType.map(filter => (
                             <span key={filter} className="inline-block bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full mr-1 mb-1">
                                 {filter}
