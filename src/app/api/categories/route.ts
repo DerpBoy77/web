@@ -1,43 +1,70 @@
 import { NextResponse } from 'next/server';
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
-
-// Open the database
-async function getDB() {
-    return open({
-        filename: './products.db',
-        driver: sqlite3.Database,
-    });
-}
+import { dataStore } from '@/lib/data';
 
 export async function GET() {
-    const db = await getDB();
-    await db.run('CREATE TABLE IF NOT EXISTS categories (id INTEGER PRIMARY KEY, name TEXT)');
-    const categories = await db.all('SELECT * FROM categories');
-    await db.close();
-    return NextResponse.json(categories);
+    try {
+        const categories = dataStore.getCategories();
+        return NextResponse.json(categories);
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        return NextResponse.json({ error: 'Failed to fetch categories' }, { status: 500 });
+    }
 }
 
 export async function POST(req: Request) {
-    const db = await getDB();
-    const { id, name } = await req.json();
-    await db.run('INSERT INTO categories (id, name) VALUES (?, ?)', [id, name]);
-    await db.close();
-    return NextResponse.json({ success: true });
+    try {
+        const { name } = await req.json();
+        
+        if (!name) {
+            return NextResponse.json({ error: 'Name is required' }, { status: 400 });
+        }
+
+        const newCategory = dataStore.addCategory({ name });
+        return NextResponse.json(newCategory, { status: 201 });
+    } catch (error) {
+        console.error('Error creating category:', error);
+        return NextResponse.json({ error: 'Failed to create category' }, { status: 500 });
+    }
 }
 
 export async function PUT(req: Request) {
-    const db = await getDB();
-    const { id, name } = await req.json();
-    await db.run('UPDATE categories SET name = ? WHERE id = ?', [name, id]);
-    await db.close();
-    return NextResponse.json({ success: true });
+    try {
+        const { id, name } = await req.json();
+        
+        if (!id || !name) {
+            return NextResponse.json({ error: 'ID and name are required' }, { status: 400 });
+        }
+
+        const updatedCategory = dataStore.updateCategory(id, { name });
+        
+        if (!updatedCategory) {
+            return NextResponse.json({ error: 'Category not found' }, { status: 404 });
+        }
+
+        return NextResponse.json(updatedCategory);
+    } catch (error) {
+        console.error('Error updating category:', error);
+        return NextResponse.json({ error: 'Failed to update category' }, { status: 500 });
+    }
 }
 
 export async function DELETE(req: Request) {
-    const db = await getDB();
-    const { id } = await req.json();
-    await db.run('DELETE FROM categories WHERE id = ?', [id]);
-    await db.close();
-    return NextResponse.json({ success: true });
+    try {
+        const { id } = await req.json();
+        
+        if (!id) {
+            return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+        }
+
+        const deleted = dataStore.deleteCategory(id);
+        
+        if (!deleted) {
+            return NextResponse.json({ error: 'Category not found' }, { status: 404 });
+        }
+
+        return NextResponse.json({ success: true });
+    } catch (error) {
+        console.error('Error deleting category:', error);
+        return NextResponse.json({ error: 'Failed to delete category' }, { status: 500 });
+    }
 }

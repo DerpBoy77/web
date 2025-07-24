@@ -1,43 +1,70 @@
 import { NextResponse } from 'next/server';
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
-
-// Open the database
-async function getDB() {
-    return open({
-        filename: './products.db',
-        driver: sqlite3.Database,
-    });
-}
+import { dataStore } from '@/lib/data';
 
 export async function GET() {
-    const db = await getDB();
-    await db.run('CREATE TABLE IF NOT EXISTS products (id INTEGER PRIMARY KEY, name TEXT, category TEXT, image TEXT)');
-    const products = await db.all('SELECT * FROM products');
-    await db.close();
-    return NextResponse.json(products);
+    try {
+        const products = dataStore.getProducts();
+        return NextResponse.json(products);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 });
+    }
 }
 
 export async function POST(req: Request) {
-    const db = await getDB();
-    const { id, name, category, image } = await req.json();
-    await db.run('INSERT INTO products (id, name, category, image) VALUES (?, ?, ?, ?)', [id, name, category, image || null]);
-    await db.close();
-    return NextResponse.json({ success: true });
+    try {
+        const { name, category, image } = await req.json();
+        
+        if (!name || !category) {
+            return NextResponse.json({ error: 'Name and category are required' }, { status: 400 });
+        }
+
+        const newProduct = dataStore.addProduct({ name, category, image });
+        return NextResponse.json(newProduct, { status: 201 });
+    } catch (error) {
+        console.error('Error creating product:', error);
+        return NextResponse.json({ error: 'Failed to create product' }, { status: 500 });
+    }
 }
 
 export async function PUT(req: Request) {
-    const db = await getDB();
-    const { id, name, category, image } = await req.json();
-    await db.run('UPDATE products SET name = ?, category = ?, image = ? WHERE id = ?', [name, category, image || null, id]);
-    await db.close();
-    return NextResponse.json({ success: true });
+    try {
+        const { id, name, category, image } = await req.json();
+        
+        if (!id || !name || !category) {
+            return NextResponse.json({ error: 'ID, name, and category are required' }, { status: 400 });
+        }
+
+        const updatedProduct = dataStore.updateProduct(id, { name, category, image });
+        
+        if (!updatedProduct) {
+            return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+        }
+
+        return NextResponse.json(updatedProduct);
+    } catch (error) {
+        console.error('Error updating product:', error);
+        return NextResponse.json({ error: 'Failed to update product' }, { status: 500 });
+    }
 }
 
 export async function DELETE(req: Request) {
-    const db = await getDB();
-    const { id } = await req.json();
-    await db.run('DELETE FROM products WHERE id = ?', [id]);
-    await db.close();
-    return NextResponse.json({ success: true });
+    try {
+        const { id } = await req.json();
+        
+        if (!id) {
+            return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+        }
+
+        const deleted = dataStore.deleteProduct(id);
+        
+        if (!deleted) {
+            return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+        }
+
+        return NextResponse.json({ success: true });
+    } catch (error) {
+        console.error('Error deleting product:', error);
+        return NextResponse.json({ error: 'Failed to delete product' }, { status: 500 });
+    }
 }

@@ -17,28 +17,9 @@ const nextConfig: NextConfig = {
   // Enable compression
   compress: true,
   
-  // Handle rewrites for client-side routing
-  async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        destination: '/:path*',
-      },
-    ];
-  },
-  
   // Environment variables
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
-  },
-  
-  // Webpack optimizations
-  webpack: (config) => {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-    };
-    return config;
   },
 };
 

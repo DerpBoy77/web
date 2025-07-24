@@ -2,6 +2,14 @@
 
 This branch is configured for optimal deployment on Netlify.
 
+## ⚠️ Important Changes Made
+
+**SQLite Database Replaced with Static Data**: 
+- Removed SQLite dependencies (`sqlite3`, `sqlite`) that don't work on Netlify
+- Created static data store in `/src/lib/data.ts`
+- Updated API routes to use in-memory data storage
+- **Note**: Data will reset on each deployment (use external database for production)
+
 ## Configuration Files Added
 
 ### 1. `netlify.toml`
@@ -17,7 +25,13 @@ This branch is configured for optimal deployment on Netlify.
 - Production optimizations
 - Client-side routing support
 
-### 3. `.env.example`
+### 3. `/src/lib/data.ts` (New)
+- Static data store replacing SQLite database
+- 17 default garment hanger categories
+- 10 sample products
+- In-memory CRUD operations
+
+### 4. `.env.example`
 - Template for environment variables
 - Copy to `.env.local` and fill in your values
 
