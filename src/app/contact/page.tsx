@@ -1,6 +1,7 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Input, Textarea, Button, Card } from "@/components/ui";
 
 export default function Contact() {
     return (
@@ -12,17 +13,43 @@ export default function Contact() {
                 <p className="text-lg text-center text-gray-600 mb-12">We&apos;d love to hear from you. Please fill out the form below.</p>
 
                 <div className="max-w-2xl mx-auto">
-                    <form className="bg-gray-50 p-8 rounded-lg shadow-md">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <input type="text" placeholder="Your Name" className="w-full p-3 border rounded-md" />
-                            <input type="email" placeholder="Your Email" className="w-full p-3 border rounded-md" />
-                        </div>
-                        <input type="text" placeholder="Subject" className="w-full p-3 border rounded-md mb-6" />
-                        <textarea placeholder="Your Message" rows={5} className="w-full p-3 border rounded-md mb-6"></textarea>
-                        <button type="submit" className="w-full bg-pink-500 text-white font-bold py-3 rounded-md hover:bg-pink-600 transition">
-                            Send Message
-                        </button>
-                    </form>
+                    <Card variant="colored" color="gray" padding="lg">
+                        <form className="space-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <Input
+                                    type="text"
+                                    placeholder="Your Name"
+                                    name="name"
+                                    required
+                                />
+                                <Input
+                                    type="email"
+                                    placeholder="Your Email"
+                                    name="email"
+                                    required
+                                />
+                            </div>
+                            <Input
+                                type="text"
+                                placeholder="Subject"
+                                name="subject"
+                                required
+                            />
+                            <Textarea
+                                placeholder="Your Message"
+                                rows={5}
+                                name="message"
+                                required
+                            />
+                            <Button
+                                type="submit"
+                                fullWidth
+                                size="lg"
+                            >
+                                Send Message
+                            </Button>
+                        </form>
+                    </Card>
                 </div>
             </div>
 

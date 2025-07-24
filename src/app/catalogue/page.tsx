@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Button, EmptyState, ProductCard, FadeIn, SlideUp, StaggerContainer } from "@/components/ui";
 
 type Product = { id: number; name: string; category: string; image?: string };
 type EnquiryItem = Product & { quantity: number };
@@ -125,7 +126,9 @@ export default function Catalogue() {
             <Header currentPage="catalogue" />
 
             <div className="container mx-auto px-4 py-12 text-black flex-1">
-                <h1 className="text-4xl font-bold text-center mb-12">Catalogue</h1>
+                <FadeIn>
+                    <h1 className="text-4xl font-bold text-center mb-12">Catalogue</h1>
+                </FadeIn>
                 <div className="flex">
                     {/* Filters */}
                     <aside className="w-1/4 pr-8">
@@ -204,12 +207,12 @@ export default function Catalogue() {
                                 </div>
                             )}
 
-                            <button
+                            <Button
                                 onClick={clearAllFilters}
-                                className="bg-pink-500 text-white w-full py-2 rounded-md hover:bg-pink-600 transition-colors"
+                                fullWidth
                             >
                                 CLEAR ALL FILTERS
-                            </button>
+                            </Button>
                         </div>
                     </aside>
 
@@ -238,53 +241,40 @@ export default function Catalogue() {
                         </div>
 
                         {filteredProducts.length === 0 ? (
-                            <div className="text-center py-12">
-                                <div className="mb-4">
+                            <EmptyState
+                                icon={
                                     <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.5-.816-6.205-2.178C3.993 10.98 2 8.61 2 6c0-3.314 2.686-6 6-6h8c3.314 0 6 2.686 6 6 0 2.61-1.993 4.98-3.795 6.822C16.5 14.184 14.34 15 12 15z" />
                                     </svg>
-                                </div>
-                                <h3 className="text-lg font-medium text-gray-900 mb-2">No products found</h3>
-                                <p className="text-gray-500">
-                                    {products.length === 0
+                                }
+                                title="No products found"
+                                description={
+                                    products.length === 0
                                         ? "No products are available in the catalogue."
                                         : "Try adjusting your filters to see more results."
-                                    }
-                                </p>
-                                {(filters.hangerType.length > 0 || filters.garmentType.length > 0 || filters.hookType.length > 0) && (
-                                    <button
-                                        onClick={clearAllFilters}
-                                        className="mt-4 bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 transition-colors"
-                                    >
-                                        Clear All Filters
-                                    </button>
-                                )}
-                            </div>
+                                }
+                                action={
+                                    (filters.hangerType.length > 0 || filters.garmentType.length > 0 || filters.hookType.length > 0) && (
+                                        <Button onClick={clearAllFilters}>
+                                            Clear All Filters
+                                        </Button>
+                                    )
+                                }
+                            />
                         ) : (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" staggerDelay={0.1}>
                                 {filteredProducts.map((product: Product) => (
-                                    <div key={product.id} className="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-                                        {product.image ? (
-                                            <img src={product.image} alt={product.name} className="w-full h-48 object-cover mx-auto mb-4 rounded" />
-                                        ) : (
-                                            <div className="w-full h-48 bg-gray-200 mb-4 rounded flex items-center justify-center">
-                                                <span className="text-gray-500">No Image</span>
-                                            </div>
-                                        )}
-                                        <p className="font-semibold text-gray-900">{product.name}</p>
-                                        <p className="text-sm text-gray-500 mb-4">{product.category}</p>
-                                        <button
-                                            onClick={() => addToEnquiry(product)}
-                                            className={`w-full py-2 rounded-md transition-colors ${isInEnquiry(product.id)
-                                                ? "bg-green-500 text-white hover:bg-green-600"
-                                                : "bg-pink-500 text-white hover:bg-pink-600"
-                                                }`}
-                                        >
-                                            {isInEnquiry(product.id) ? "✓ ADDED TO ENQUIRY" : "ADD TO ENQUIRY"}
-                                        </button>
-                                    </div>
+                                    <ProductCard
+                                        key={product.id}
+                                        id={product.id}
+                                        name={product.name}
+                                        category={product.category}
+                                        image={product.image}
+                                        onAddToEnquiry={addToEnquiry}
+                                        isInEnquiry={isInEnquiry(product.id)}
+                                    />
                                 ))}
-                            </div>
+                            </StaggerContainer>
                         )}
                     </main>
                 </div>

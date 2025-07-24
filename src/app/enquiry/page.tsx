@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Button, Card, Input, Textarea, EmptyState } from "@/components/ui";
 
 type EnquiryItem = {
     id: number;
@@ -80,38 +81,39 @@ export default function Enquiry() {
 
             <div className="container mx-auto px-4 py-12 text-black flex-1">
                 <h1 className="text-4xl font-bold text-center mb-12">Product Enquiry</h1>                {enquiryItems.length === 0 ? (
-                    <div className="text-center py-12">
-                        <div className="mb-4">
+                    <EmptyState
+                        icon={
                             <svg className="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                             </svg>
-                        </div>
-                        <h3 className="text-xl font-medium text-gray-900 mb-2">Your enquiry list is empty</h3>
-                        <p className="text-gray-500 mb-6">Browse our catalogue and add products to your enquiry.</p>
-                        <a
-                            href="/catalogue"
-                            className="bg-pink-500 text-white px-6 py-3 rounded-md hover:bg-pink-600 transition-colors inline-block"
-                        >
-                            Browse Catalogue
-                        </a>
-                    </div>
+                        }
+                        title="Your enquiry list is empty"
+                        description="Browse our catalogue and add products to your enquiry."
+                        action={
+                            <Button href="/catalogue" className="transform-none hover:transform-none hover:shadow-none">
+                                Browse Catalogue
+                            </Button>
+                        }
+                    />
                 ) : (
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {/* Enquiry Items */}
                         <div className="lg:col-span-2">
-                            <div className="bg-white rounded-lg shadow-md p-6">
+                            <Card className="card-no-hover">
                                 <div className="flex justify-between items-center mb-6">
                                     <h2 className="text-2xl font-bold">Selected Products ({getTotalItems()} items)</h2>
-                                    <button
+                                    <Button
                                         onClick={clearEnquiry}
-                                        className="text-red-500 hover:text-red-700 text-sm font-medium"
+                                        variant="danger"
+                                        size="sm"
+                                        className="transform-none hover:transform-none hover:shadow-none"
                                     >
                                         Clear All
-                                    </button>
+                                    </Button>
                                 </div>
 
                                 <div className="space-y-4">
-                                    {enquiryItems.map((item) => (
+                                    {enquiryItems.map((item, index) => (
                                         <div key={item.id} className="flex items-center border-b pb-4">
                                             {item.image ? (
                                                 <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded" />
@@ -127,123 +129,98 @@ export default function Enquiry() {
                                             </div>
 
                                             <div className="flex items-center">
-                                                <button
+                                                <Button
                                                     onClick={() => removeItem(item.id)}
-                                                    className="text-red-500 hover:text-red-700 text-sm font-medium"
+                                                    variant="danger"
+                                                    size="sm"
+                                                    className="transform-none hover:transform-none hover:shadow-none"
                                                 >
                                                     Remove
-                                                </button>
+                                                </Button>
                                             </div>
                                         </div>
                                     ))}
                                 </div>
-                            </div>
-                        </div>
-
-                        {/* Customer Information Form */}
-                        <div className="lg:col-span-1">
-                            <div className="bg-white rounded-lg shadow-md p-6">
+                            </Card>
+                        </div>                        {/* Customer Information Form */}
+                        <div className="lg:col-span-1 lg:sticky lg:top-8 self-start">
+                            <Card className="card-no-hover">
                                 <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
 
                                 <form onSubmit={handleSubmit} className="space-y-4" data-netlify="true">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Full Name *
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value={customerInfo.name}
-                                            onChange={handleInputChange}
-                                            required
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-                                            placeholder="Your full name"
-                                        />
-                                    </div>
+                                    <Input
+                                        label="Full Name"
+                                        type="text"
+                                        name="name"
+                                        value={customerInfo.name}
+                                        onChange={handleInputChange}
+                                        required
+                                        placeholder="Your full name"
+                                    />
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Email Address *
-                                        </label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={customerInfo.email}
-                                            onChange={handleInputChange}
-                                            required
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-                                            placeholder="your.email@example.com"
-                                        />
-                                    </div>
+                                    <Input
+                                        label="Email Address"
+                                        type="email"
+                                        name="email"
+                                        value={customerInfo.email}
+                                        onChange={handleInputChange}
+                                        required
+                                        placeholder="your.email@example.com"
+                                    />
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Phone Number *
-                                        </label>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value={customerInfo.phone}
-                                            onChange={handleInputChange}
-                                            required
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-                                            placeholder="+1 (555) 123-4567"
-                                        />
-                                    </div>
+                                    <Input
+                                        label="Phone Number"
+                                        type="tel"
+                                        name="phone"
+                                        value={customerInfo.phone}
+                                        onChange={handleInputChange}
+                                        required
+                                        placeholder="+1 (555) 123-4567"
+                                    />
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Company Name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="company"
-                                            value={customerInfo.company}
-                                            onChange={handleInputChange}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-                                            placeholder="Your company name (optional)"
-                                        />
-                                    </div>
+                                    <Input
+                                        label="Company Name"
+                                        type="text"
+                                        name="company"
+                                        value={customerInfo.company}
+                                        onChange={handleInputChange}
+                                        placeholder="Your company name (optional)"
+                                    />
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Estimated Order Quantity *
-                                        </label>
-                                        <input
+                                    <div className="space-y-1">
+                                        <Input
+                                            label="Estimated Order Quantity"
                                             type="text"
                                             name="estimatedQuantity"
                                             value={customerInfo.estimatedQuantity}
                                             onChange={handleInputChange}
                                             required
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-pink-500 focus:border-transparent"
                                             placeholder="e.g., 100 pieces, 50 dozen, 200 units"
                                         />
-                                        <p className="text-xs text-gray-500 mt-1">
+                                        <p className="text-xs text-gray-500">
                                             Please specify your estimated quantity needs for all selected products
                                         </p>
                                     </div>
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Additional Message
-                                        </label>
-                                        <textarea
-                                            name="message"
-                                            value={customerInfo.message}
-                                            onChange={handleInputChange}
-                                            rows={4}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-                                            placeholder="Any specific requirements or questions..."
-                                        />
-                                    </div>
+                                    <Textarea
+                                        label="Additional Message"
+                                        name="message"
+                                        value={customerInfo.message}
+                                        onChange={handleInputChange}
+                                        rows={4}
+                                        placeholder="Any specific requirements or questions..."
+                                    />
 
-                                    <button
+                                    <Button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full bg-pink-500 text-white py-3 rounded-md hover:bg-pink-600 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                                        loading={isSubmitting}
+                                        fullWidth
+                                        size="lg"
+                                        className="transform-none hover:transform-none hover:shadow-none hover:none"
                                     >
-                                        {isSubmitting ? "Submitting..." : "Submit Enquiry"}
-                                    </button>
+                                        Submit Enquiry
+                                    </Button>
                                 </form>
 
                                 <div className="mt-6 p-4 bg-blue-50 rounded-md">
@@ -255,7 +232,7 @@ export default function Enquiry() {
                                         <li>• Custom solutions available on request</li>
                                     </ul>
                                 </div>
-                            </div>
+                            </Card>
                         </div>
                     </div>
                 )}
