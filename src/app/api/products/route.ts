@@ -14,7 +14,7 @@ export async function GET() {
 export async function POST(req: Request) {
     try {
         const { name, category, image } = await req.json();
-        
+
         if (!name || !category) {
             return NextResponse.json({ error: 'Name and category are required' }, { status: 400 });
         }
@@ -30,13 +30,13 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
     try {
         const { id, name, category, image } = await req.json();
-        
+
         if (!id || !name || !category) {
             return NextResponse.json({ error: 'ID, name, and category are required' }, { status: 400 });
         }
 
         const updatedProduct = dataStore.updateProduct(id, { name, category, image });
-        
+
         if (!updatedProduct) {
             return NextResponse.json({ error: 'Product not found' }, { status: 404 });
         }
@@ -51,13 +51,13 @@ export async function PUT(req: Request) {
 export async function DELETE(req: Request) {
     try {
         const { id } = await req.json();
-        
+
         if (!id) {
             return NextResponse.json({ error: 'ID is required' }, { status: 400 });
         }
 
         const deleted = dataStore.deleteProduct(id);
-        
+
         if (!deleted) {
             return NextResponse.json({ error: 'Product not found' }, { status: 404 });
         }

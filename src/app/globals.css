@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 
@@ -23,6 +23,17 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+html {
+  background: var(--background);
+}
+
+/* Ensure all pages have proper background */
+.page-container {
+  min-height: 100vh;
+  background: white;
 }
 
 /* Custom Animations */
@@ -211,4 +222,106 @@ body {
 .card-no-hover:hover {
   transform: none !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Mobile-specific utilities */
+@media (max-width: 640px) {
+  .mobile-hide-overflow {
+    overflow-x: hidden;
+  }
+  
+  .mobile-full-width {
+    width: 100vw;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .mobile-text-center {
+    text-align: center;
+  }
+}
+
+/* Mobile Menu Styles */
+.mobile-menu-backdrop {
+  backdrop-filter: blur(2px);
+}
+
+.mobile-menu {
+  animation: slideInDown 0.2s ease-out forwards;
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+  background: white !important;
+}
+
+/* Ensure mobile menu is above everything */
+.mobile-menu-container {
+  z-index: 9999 !important;
+}
+
+/* Force white background for mobile navigation */
+nav[class*="fixed"][class*="bg-white"] {
+  background-color: white !important;
+  color: #374151 !important;
+}
+
+/* Additional overrides for mobile menu with inline styles */
+nav[style*="backgroundColor"] {
+  background-color: white !important;
+}
+
+nav[style*="backgroundColor"] div[style*="backgroundColor"] {
+  background-color: white !important;
+}
+
+/* Override any potential dark mode conflicts */
+nav.fixed {
+  background-color: white !important;
+}
+
+/* Catalogue mobile filter overlay fixes */
+div[class*="lg:hidden"][class*="fixed"] .bg-white {
+  background-color: white !important;
+}
+
+div[class*="lg:hidden"][class*="fixed"] div[style*="backgroundColor"] {
+  background-color: white !important;
+}
+
+/* Force white background on mobile filter panels */
+div[class*="max-w-sm"][class*="ml-auto"] {
+  background-color: white !important;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive text scaling */
+.responsive-text {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+.responsive-heading {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 768px) {
+  button, .button, a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
 }
