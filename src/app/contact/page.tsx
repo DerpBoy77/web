@@ -8,14 +8,14 @@ export default function Contact() {
         <div className="bg-white min-h-screen flex flex-col">
             <Header currentPage="contact" />
 
-            <div className="container mx-auto px-4 py-16 text-black flex-1">
-                <h1 className="text-4xl font-bold text-center mb-4">Contact Us</h1>
-                <p className="text-lg text-center text-gray-600 mb-12">We&apos;d love to hear from you. Please fill out the form below.</p>
+            <div className="container mx-auto px-4 py-8 sm:py-12 lg:py-16 text-black flex-1">
+                <h1 className="text-3xl sm:text-4xl font-bold text-center mb-4">Contact Us</h1>
+                <p className="text-base sm:text-lg text-center text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto">We&apos;d love to hear from you. Please fill out the form below.</p>
 
                 <div className="max-w-2xl mx-auto">
                     <Card variant="colored" color="gray" padding="lg">
-                        <form className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <form className="space-y-4 sm:space-y-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                                 <Input
                                     type="text"
                                     placeholder="Your Name"
@@ -45,6 +45,7 @@ export default function Contact() {
                                 type="submit"
                                 fullWidth
                                 size="lg"
+                                className="text-sm sm:text-base"
                             >
                                 Send Message
                             </Button>
