@@ -18,7 +18,7 @@ export default function About() {
                             </SlideUp>
                             <SlideUp delay={0.2}>
                                 <p className="text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed px-4">
-                                    Your trusted partner for premium quality hangers and garment storage solutions. 
+                                    Your trusted partner for premium quality hangers and garment storage solutions.
                                     We specialize in crafting durable, stylish hangers for all your clothing needs.
                                 </p>
                             </SlideUp>
@@ -35,18 +35,18 @@ export default function About() {
                                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Our Story</h2>
                                     <div className="space-y-4 text-gray-600 leading-relaxed text-sm sm:text-base">
                                         <p>
-                                            Founded with a passion for quality and innovation, Kavi Hangbro has been serving customers 
-                                            with premium hanger solutions for over two decades. What started as a small family business 
+                                            Founded with a passion for quality and innovation, Kavi Hangbro has been serving customers
+                                            with premium hanger solutions for over two decades. What started as a small family business
                                             has grown into a trusted name in the garment storage industry.
                                         </p>
                                         <p>
-                                            We understand that proper garment care begins with the right hanger. That's why we've 
-                                            dedicated ourselves to creating hangers that not only preserve the shape and quality of 
+                                            We understand that proper garment care begins with the right hanger. That&apos;s why we&apos;ve
+                                            dedicated ourselves to creating hangers that not only preserve the shape and quality of
                                             your clothes but also enhance your closet organization.
                                         </p>
                                         <p>
-                                            From wooden suit hangers to velvet non-slip designs, every product in our collection is 
-                                            carefully crafted with attention to detail and built to last. We believe in sustainable 
+                                            From wooden suit hangers to velvet non-slip designs, every product in our collection is
+                                            carefully crafted with attention to detail and built to last. We believe in sustainable
                                             practices and use eco-friendly materials wherever possible.
                                         </p>
                                     </div>
@@ -82,7 +82,7 @@ export default function About() {
                                 <div className="text-3xl sm:text-4xl mb-4">🌱</div>
                                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Sustainability</h3>
                                 <p className="text-gray-600 text-sm sm:text-base">
-                                    We're committed to eco-friendly practices, using sustainable materials and 
+                                    We&apos;re committed to eco-friendly practices, using sustainable materials and
                                     manufacturing processes to minimize our environmental impact.
                                 </p>
                             </div>
@@ -91,7 +91,7 @@ export default function About() {
                                 <div className="text-3xl sm:text-4xl mb-4">⭐</div>
                                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Quality Excellence</h3>
                                 <p className="text-gray-600 text-sm sm:text-base">
-                                    Every hanger is crafted with precision and attention to detail, ensuring 
+                                    Every hanger is crafted with precision and attention to detail, ensuring
                                     durability and functionality that exceeds expectations.
                                 </p>
                             </div>
@@ -100,7 +100,7 @@ export default function About() {
                                 <div className="text-3xl sm:text-4xl mb-4">🤝</div>
                                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Customer Focus</h3>
                                 <p className="text-gray-600 text-sm sm:text-base">
-                                    We listen to our customers' needs and continuously innovate to provide 
+                                    We listen to our customers&apos; needs and continuously innovate to provide
                                     solutions that make garment care easier and more effective.
                                 </p>
                             </div>
@@ -217,7 +217,7 @@ export default function About() {
                     <div className="container mx-auto px-4 text-center">
                         <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Ready to Upgrade Your Closet?</h2>
                         <p className="text-lg sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">
-                            Discover our premium collection of hangers designed to keep your garments looking their best. 
+                            Discover our premium collection of hangers designed to keep your garments looking their best.
                             From everyday essentials to luxury pieces, we have the perfect hanger for every item in your wardrobe.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
