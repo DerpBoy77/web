@@ -5,9 +5,9 @@ export default function Footer() {
                 <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center gap-2 sm:gap-4 mb-4">
                     <span>695, Pace City 2, Gurugram, Haryana, India</span>
                     <span className="hidden sm:inline">|</span>
-                    <span>Phone +91 9910233400</span>
+                    <span>Phone +91 9910233477</span>
                     <span className="hidden sm:inline">|</span>
-                    <span>Email: kavihangbro@gmail.com</span>
+                    <span>Email: kavi@gmail.com</span>
                 </div>
                 <div className="mt-4">Copyright © 2025 Kavi Hangbro</div>
             </div>

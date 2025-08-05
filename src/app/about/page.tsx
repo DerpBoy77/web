@@ -14,12 +14,12 @@ export default function About() {
                     <div className="container mx-auto px-4 text-center">
                         <FadeIn>
                             <SlideUp>
-                                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">About Our Company</h1>
+                                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">About Kavi Hangbro</h1>
                             </SlideUp>
                             <SlideUp delay={0.2}>
                                 <p className="text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed px-4">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam quis nostrud.
+                                    Your trusted partner for premium quality hangers and garment storage solutions. 
+                                    We specialize in crafting durable, stylish hangers for all your clothing needs.
                                 </p>
                             </SlideUp>
                         </FadeIn>
@@ -35,19 +35,19 @@ export default function About() {
                                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Our Story</h2>
                                     <div className="space-y-4 text-gray-600 leading-relaxed text-sm sm:text-base">
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            Founded with a passion for quality and innovation, Kavi Hangbro has been serving customers 
+                                            with premium hanger solutions for over two decades. What started as a small family business 
+                                            has grown into a trusted name in the garment storage industry.
                                         </p>
                                         <p>
-                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                            sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            We understand that proper garment care begins with the right hanger. That's why we've 
+                                            dedicated ourselves to creating hangers that not only preserve the shape and quality of 
+                                            your clothes but also enhance your closet organization.
                                         </p>
                                         <p>
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                                            veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                                            From wooden suit hangers to velvet non-slip designs, every product in our collection is 
+                                            carefully crafted with attention to detail and built to last. We believe in sustainable 
+                                            practices and use eco-friendly materials wherever possible.
                                         </p>
                                     </div>
                                 </div>
@@ -56,9 +56,9 @@ export default function About() {
                                 <div className="relative">
                                     <div className="bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl p-6 sm:p-8 h-80 sm:h-96 flex items-center justify-center">
                                         <div className="text-center">
-                                            <div className="text-5xl sm:text-6xl mb-4">🏭</div>
-                                            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">Lorem Ipsum</h3>
-                                            <p className="text-gray-600 text-sm sm:text-base">Dolor sit amet consectetur adipiscing elit</p>
+                                            <div className="text-5xl sm:text-6xl mb-4">👔</div>
+                                            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">Quality Craftsmanship</h3>
+                                            <p className="text-gray-600 text-sm sm:text-base">Premium hangers for every garment type</p>
                                         </div>
                                     </div>
                                 </div>
@@ -73,35 +73,35 @@ export default function About() {
                         <div className="text-center mb-8 sm:mb-12">
                             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
                             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-                                Lorem ipsum dolor sit amet consectetur adipiscing
+                                The principles that guide everything we do
                             </p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
                             <div className="bg-white rounded-xl p-6 sm:p-8 shadow-lg text-center">
                                 <div className="text-3xl sm:text-4xl mb-4">🌱</div>
-                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Lorem Ipsum</h3>
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Sustainability</h3>
                                 <p className="text-gray-600 text-sm sm:text-base">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua.
+                                    We're committed to eco-friendly practices, using sustainable materials and 
+                                    manufacturing processes to minimize our environmental impact.
                                 </p>
                             </div>
 
                             <div className="bg-white rounded-xl p-6 sm:p-8 shadow-lg text-center">
                                 <div className="text-3xl sm:text-4xl mb-4">⭐</div>
-                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Dolor Sit</h3>
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Quality Excellence</h3>
                                 <p className="text-gray-600 text-sm sm:text-base">
-                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                    nisi ut aliquip ex ea commodo consequat.
+                                    Every hanger is crafted with precision and attention to detail, ensuring 
+                                    durability and functionality that exceeds expectations.
                                 </p>
                             </div>
 
                             <div className="bg-white rounded-xl p-6 sm:p-8 shadow-lg text-center md:col-span-2 xl:col-span-1">
                                 <div className="text-3xl sm:text-4xl mb-4">🤝</div>
-                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Consectetur</h3>
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Customer Focus</h3>
                                 <p className="text-gray-600 text-sm sm:text-base">
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur.
+                                    We listen to our customers' needs and continuously innovate to provide 
+                                    solutions that make garment care easier and more effective.
                                 </p>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ export default function About() {
                         <FadeIn>
                             <div className="text-center mb-8 sm:mb-12">
                                 <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Impact</h2>
-                                <p className="text-lg sm:text-xl opacity-90">Lorem ipsum dolor sit amet</p>
+                                <p className="text-lg sm:text-xl opacity-90">Trusted by customers worldwide</p>
                             </div>
                         </FadeIn>
 
@@ -133,41 +133,41 @@ export default function About() {
                         <div className="text-center mb-8 sm:mb-12">
                             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What We Offer</h2>
                             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-                                Lorem ipsum dolor sit amet consectetur adipiscing elit
+                                Comprehensive hanger solutions for every need
                             </p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                             <Card variant="colored" color="pink">
-                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Category One</h3>
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Premium Materials</h3>
                                 <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
-                                    <li>• Lorem ipsum dolor sit amet</li>
-                                    <li>• Consectetur adipiscing elit</li>
-                                    <li>• Sed do eiusmod tempor</li>
-                                    <li>• Incididunt ut labore</li>
-                                    <li>• Et dolore magna aliqua</li>
+                                    <li>• High-quality wooden hangers</li>
+                                    <li>• Durable plastic options</li>
+                                    <li>• Elegant metal designs</li>
+                                    <li>• Luxurious velvet finishes</li>
+                                    <li>• Space-saving wire hangers</li>
                                 </ul>
                             </Card>
 
                             <Card variant="colored" color="blue">
-                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Category Two</h3>
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Garment Types</h3>
                                 <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
-                                    <li>• Ut enim ad minim veniam</li>
-                                    <li>• Quis nostrud exercitation</li>
-                                    <li>• Ullamco laboris nisi</li>
-                                    <li>• Ut aliquip ex ea commodo</li>
-                                    <li>• Consequat duis aute</li>
+                                    <li>• Professional suit hangers</li>
+                                    <li>• Delicate dress hangers</li>
+                                    <li>• Casual shirt hangers</li>
+                                    <li>• Heavy coat hangers</li>
+                                    <li>• Specialized trouser hangers</li>
                                 </ul>
                             </Card>
 
                             <Card variant="colored" color="green">
-                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Category Three</h3>
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Special Features</h3>
                                 <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
-                                    <li>• Irure dolor in reprehenderit</li>
-                                    <li>• In voluptate velit esse</li>
-                                    <li>• Cillum dolore eu fugiat</li>
-                                    <li>• Nulla pariatur excepteur</li>
-                                    <li>• Sint occaecat cupidatat</li>
+                                    <li>• Non-slip surfaces</li>
+                                    <li>• 360-degree swivel hooks</li>
+                                    <li>• Adjustable clips</li>
+                                    <li>• Space-efficient designs</li>
+                                    <li>• Custom branding options</li>
                                 </ul>
                             </Card>
                         </div>
@@ -186,26 +186,26 @@ export default function About() {
 
                         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto" staggerDelay={0.2}>
                             <TeamMemberCard
-                                name="John Smith"
-                                position="Lorem Ipsum Director"
-                                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-                                initials="JS"
+                                name="Kavi Sharma"
+                                position="Founder & CEO"
+                                description="Visionary leader with over 25 years of experience in the garment accessories industry."
+                                initials="KS"
                                 avatarBgColor="pink"
                             />
 
                             <TeamMemberCard
-                                name="Jane Doe"
-                                position="Lorem Manager"
-                                description="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore."
-                                initials="JD"
+                                name="Priya Patel"
+                                position="Quality Manager"
+                                description="Ensures every hanger meets our exacting standards for durability and craftsmanship."
+                                initials="PP"
                                 avatarBgColor="blue"
                             />
 
                             <TeamMemberCard
-                                name="Mike Johnson"
-                                position="Lorem Specialist"
-                                description="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium."
-                                initials="MJ"
+                                name="Raj Kumar"
+                                position="Design Specialist"
+                                description="Creates innovative hanger designs that combine functionality with aesthetic appeal."
+                                initials="RK"
                                 avatarBgColor="green"
                             />
                         </StaggerContainer>
@@ -215,9 +215,10 @@ export default function About() {
                 {/* Call to Action */}
                 <section className="py-12 sm:py-16 bg-gradient-to-r from-pink-500 to-purple-600 text-white">
                     <div className="container mx-auto px-4 text-center">
-                        <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Lorem Ipsum Dolor Sit?</h2>
+                        <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Ready to Upgrade Your Closet?</h2>
                         <p className="text-lg sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Discover our premium collection of hangers designed to keep your garments looking their best. 
+                            From everyday essentials to luxury pieces, we have the perfect hanger for every item in your wardrobe.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
                             <Button
