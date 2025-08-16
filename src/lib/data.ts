@@ -39,13 +39,13 @@ export const defaultProducts: Product[] = [
         id: 1,
         name: "Premium Wooden Suit Hanger",
         category: "Wooden Hangers",
-        image: "/images/wooden-suit-hanger.jpg"
+        image: "/images/wooden-suit-hanger.png"
     },
     {
         id: 2,
         name: "Velvet Non-Slip Dress Hanger",
         category: "Velvet Hangers",
-        image: "/images/velvet-dress-hanger.jpg"
+        image: "/images/velvet-dress-hanger.png"
     },
     {
         id: 3,
@@ -58,42 +58,6 @@ export const defaultProducts: Product[] = [
         name: "Kids Colorful Plastic Hangers",
         category: "Kids Hangers",
         image: "/images/kids-plastic-hangers.jpg"
-    },
-    {
-        id: 5,
-        name: "Bamboo Eco-Friendly Hangers",
-        category: "Eco-Friendly Hangers",
-        image: "/images/bamboo-eco-hangers.jpg"
-    },
-    {
-        id: 6,
-        name: "Padded Satin Hangers",
-        category: "Padded Hangers",
-        image: "/images/padded-satin-hangers.jpg"
-    },
-    {
-        id: 7,
-        name: "Wire Utility Hangers",
-        category: "Wire Hangers",
-        image: "/images/wire-utility-hangers.jpg"
-    },
-    {
-        id: 8,
-        name: "Luxury Cedar Hangers",
-        category: "Luxury Hangers",
-        image: "/images/luxury-cedar-hangers.jpg"
-    },
-    {
-        id: 9,
-        name: "Clip-Style Pant Hangers",
-        category: "Pant Hangers",
-        image: "/images/clip-pant-hangers.jpg"
-    },
-    {
-        id: 10,
-        name: "Compact Travel Hangers",
-        category: "Travel Hangers",
-        image: "/images/compact-travel-hangers.jpg"
     }
 ];
 
